@@ -5,11 +5,11 @@ Gem::Specification.new do |s|
   s.name        = "ckan"
   s.version     = Ckan::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = []
-  s.email       = []
-  s.homepage    = "http://rubygems.org/gems/ckan"
-  s.summary     = "TODO: Write a gem summary"
-  s.description = "TODO: Write a gem description"
+  s.authors     = ["Aleksander Pohl"]
+  s.email       = ["apohllo@o2.pl"]
+  s.homepage    = "http://github.com/apohllo/ckan"
+  s.summary     = "Ruby Client for Comprehensive Knowledge Archive Network"
+  s.description = "Ruby Client for Comprehensive Knowledge Archive Network. Allows for querying the CKAN repository using REST API"
 
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "ckan"
