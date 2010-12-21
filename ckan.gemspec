@@ -3,7 +3,7 @@ require File.expand_path("../lib/ckan/version", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "ckan"
-  s.version     = Ckan::VERSION
+  s.version     = CKAN::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Aleksander Pohl"]
   s.email       = ["apohllo@o2.pl"]
@@ -19,4 +19,7 @@ Gem::Specification.new do |s|
   s.files        = `git ls-files`.split("\n")
   s.executables  = `git ls-files`.split("\n").map{|f| f =~ /^bin\/(.*)/ ? $1 : nil}.compact
   s.require_path = 'lib'
+  s.rdoc_options = ["--main", "README.txt"]
+  s.has_rdoc = true
+  s.extra_rdoc_files = ["README.txt"]
 end
