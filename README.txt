@@ -41,6 +41,15 @@ The gem is available at rubygems.org, so you can install it with:
   # get the resources of the package
   packages.first.resources
 
+  # query for CKAN groups
+  groups = CKAN::Group.find
+
+  # get the description of a group
+  groups.first.description
+
+  # get the list of packages inside a group
+  groups.first.packages
+
 == LICENSE:
  
 (The MIT License)
