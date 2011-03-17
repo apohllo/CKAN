@@ -3,7 +3,7 @@ module CKAN
     protected
 
     def read_lazy_data
-      unless @lazy_data_read 
+      unless @lazy_data_read
         self.class.read_remote_json_data(self.class.site + "/" + self.id).
           each do |name,value|
           self.instance_variable_set("@"+name,value)
@@ -34,7 +34,7 @@ module CKAN
 
     def self.lazy_reader(*names)
       names.each do |name|
-        define_method(name) do 
+        define_method(name) do
           read_lazy_data
           instance_variable_get("@" + name.to_s)
         end

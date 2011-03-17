@@ -4,7 +4,8 @@ module CKAN
     self.search = API_BASE + "search/package"
 
     attr_reader :id
-    lazy_reader :name, :title, :url
+    lazy_reader :name, :title, :url, :version, :author, :author_email,
+      :maintainer, :maintainer_email, :license_id, :notes
 
     def initialize(id)
       @id = id
@@ -16,13 +17,12 @@ module CKAN
       else
         query = "?"
         query += options.to_a.
-          map{|k,v| v.is_a?(Array) ? v.map{|vv| "#{k}=#{URI.encode(vv)}"}.join("&") : 
+          map{|k,v| v.is_a?(Array) ? v.map{|vv| "#{k}=#{URI.encode(vv)}"}.join("&") :
             "#{k}=#{URI.encode(v)}"}.join("&")
-        puts query
         result = read_remote_json_data(self.search + query)
         if result["count"] != result["results"].size
           query += "&offset=#{result["results"].size}&limit=#{result["count"] + result["results"].size}"
-          result["results"] += read_remote_json_data(self.search + query)["results"] 
+          result["results"] += read_remote_json_data(self.search + query)["results"]
         end
 
         result["results"].map{|id| Package.get(id)}
@@ -30,7 +30,7 @@ module CKAN
     end
 
     def resources
-      read_lazy_data 
+      read_lazy_data
       @mapped_resources ||= @resources.
         map{|r| Resource.new(r["url"],r["format"],r["description"],r["hash"])}
     end
