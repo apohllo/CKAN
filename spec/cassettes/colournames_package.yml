@@ -1,0 +1,113 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ckan.net/api/1/rest/package/colournames
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Server:
+      - nginx/0.7.65
+      Date:
+      - Thu, 22 Mar 2012 04:18:20 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '185'
+      Location:
+      - http://thedatahub.org/api/1/rest/package/colournames
+      X-Cache:
+      - MISS from localhost
+      X-Cache-Lookup:
+      - MISS from localhost:80
+      Via:
+      - 1.0 localhost (squid/3.0.STABLE19)
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
+        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/0.7.65</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 22 Mar 2012 04:18:20 GMT
+- request:
+    method: get
+    uri: http://thedatahub.org/api/1/rest/package/colournames
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.65
+      Date:
+      - Thu, 22 Mar 2012 04:18:22 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Access-Control-Allow-Methods:
+      - POST, PUT, GET, OPTIONS
+      Access-Control-Allow-Headers:
+      - X-CKAN-API-KEY
+      Set-Cookie:
+      - ckan_lang=en; Path=/
+      Content-Length:
+      - '1933'
+      X-Cache:
+      - MISS from localhost
+      X-Cache-Lookup:
+      - MISS from localhost:80
+      Via:
+      - 1.0 localhost (squid/3.0.STABLE19)
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"license_title": "License Not Specified", "maintainer": null, "maintainer_email":
+        null, "id": "53587fae-fb5f-46e5-ae55-14f9951d0808", "metadata_created": "2009-12-04T21:34:40.311723",
+        "relationships": [], "license": "License Not Specified", "metadata_modified":
+        "2009-12-28T22:27:30.559623", "author": "Dolores Labs", "author_email": "info@doloreslabs.com",
+        "download_url": "http://assets.doloreslabs.com/jobs/colors/doloreslabs-color-names-v1.zip",
+        "state": "active", "version": "1", "license_id": "notspecified", "type": null,
+        "resources": [{"mimetype": null, "resource_group_id": "ac52491c-3d91-e898-e03d-83c444312a21",
+        "hash": null, "description": "", "format": "", "url": "http://assets.doloreslabs.com/jobs/colors/doloreslabs-color-names-v1.zip",
+        "cache_url": null, "webstore_url": null, "cache_last_updated": null, "package_id":
+        "53587fae-fb5f-46e5-ae55-14f9951d0808", "mimetype_inner": null, "webstore_last_updated":
+        null, "last_modified": null, "position": 0, "size": null, "id": "a83dbe22-c0cd-4a50-a4d2-7300a476028c",
+        "resource_type": null, "name": null}], "tags": ["aesthetics", "colour", "dataset",
+        "perception"], "groups": ["art"], "name": "colournames", "isopen": false,
+        "notes_rendered": "<p>Comma-Separated Value dataset of 10,000 colours and
+        the labels applied to them by Amazon Mechanical Turk clickworkers.\n</p>\n<p>Archive
+        contains the dataset and useful accompanying software.\n</p>", "url": "http://blog.doloreslabs.com/2008/03/our-color-names-data-set-is-online/",
+        "ckan_url": "http://thedatahub.org/dataset/colournames", "notes": "Comma-Separated
+        Value dataset of 10,000 colours and the labels applied to them by Amazon Mechanical
+        Turk clickworkers.\r\n\r\nArchive contains the dataset and useful accompanying
+        software.", "title": "Dolores Labs Blog \u00bb Our color names data set is
+        online", "ratings_average": 5.0, "extras": {}, "ratings_count": 2, "revision_id":
+        "e6a6eb1b-8239-46bf-92be-a44889ec58f7"}'
+    http_version: 
+  recorded_at: Thu, 22 Mar 2012 04:18:22 GMT
+recorded_with: VCR 2.0.0
