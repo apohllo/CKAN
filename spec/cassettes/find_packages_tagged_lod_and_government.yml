@@ -1,0 +1,308 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ckan.net/api/1/search/package?tags=government
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Server:
+      - nginx/0.7.65
+      Date:
+      - Thu, 22 Mar 2012 04:40:43 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '185'
+      Location:
+      - http://thedatahub.org/api/1/search/package?tags=lod&tags=government
+      X-Cache:
+      - MISS from localhost
+      X-Cache-Lookup:
+      - MISS from localhost:80
+      Via:
+      - 1.0 localhost (squid/3.0.STABLE19)
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
+        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/0.7.65</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 22 Mar 2012 04:40:43 GMT
+- request:
+    method: get
+    uri: http://thedatahub.org/api/1/search/package?tags=government
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.65
+      Date:
+      - Thu, 22 Mar 2012 04:40:44 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Access-Control-Allow-Methods:
+      - POST, PUT, GET, OPTIONS
+      Access-Control-Allow-Headers:
+      - X-CKAN-API-KEY
+      Set-Cookie:
+      - ckan_lang=en; Path=/
+      Content-Length:
+      - '271'
+      X-Cache:
+      - MISS from localhost
+      X-Cache-Lookup:
+      - MISS from localhost:80
+      Via:
+      - 1.0 localhost (squid/3.0.STABLE19)
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"count": 517, "results": ["2000-us-census-rdf", "addgene", "aemet",
+        "agrovoc-skos", "allen-brain-atlas", "allie-abbreviation-and-long-form-database-in-life-science",
+        "amsterdam-museum-as-edm-lod", "animal-diversity-web", "archiveshub-linkeddata",
+        "austrian_ski_racers"]}'
+    http_version: 
+  recorded_at: Thu, 22 Mar 2012 04:40:44 GMT
+- request:
+    method: get
+    uri: http://ckan.net/api/1/search/package?limit=527&offset=10&tags=government
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Server:
+      - nginx/0.7.65
+      Date:
+      - Thu, 22 Mar 2012 04:40:44 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '185'
+      Location:
+      - http://thedatahub.org/api/1/search/package?tags=lod&tags=government&offset=10&limit=527
+      X-Cache:
+      - MISS from localhost
+      X-Cache-Lookup:
+      - MISS from localhost:80
+      Via:
+      - 1.0 localhost (squid/3.0.STABLE19)
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
+        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/0.7.65</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 22 Mar 2012 04:40:44 GMT
+- request:
+    method: get
+    uri: http://thedatahub.org/api/1/search/package?limit=527&offset=10&tags=government
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.65
+      Date:
+      - Thu, 22 Mar 2012 04:40:45 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Access-Control-Allow-Methods:
+      - POST, PUT, GET, OPTIONS
+      Access-Control-Allow-Headers:
+      - X-CKAN-API-KEY
+      Set-Cookie:
+      - ckan_lang=en; Path=/
+      Content-Length:
+      - '10623'
+      X-Cache:
+      - MISS from localhost
+      X-Cache-Lookup:
+      - MISS from localhost:80
+      Via:
+      - 1.0 localhost (squid/3.0.STABLE19)
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"count": 517, "results": ["b3kat", "bams", "bbc-music", "bbc-programmes",
+        "bbc-wildlife-finder", "bbop", "bbop-selected", "beneficiaries-of-the-european-commission",
+        "berlin-offener-haushalt", "bibbase", "bible-ontology", "billion_triples_challenge_dataset2008",
+        "billion_triples_challenge_dataset_2010", "bio2rdf-affymetrix", "bio2rdf-biocyc",
+        "bio2rdf-cas", "bio2rdf-chebi", "bio2rdf-genbank", "bio2rdf-geneid", "bio2rdf-go",
+        "bio2rdf-hgnc", "bio2rdf-homologene", "bio2rdf-interpro", "bio2rdf-kegg-compound",
+        "bio2rdf-kegg-drug", "bio2rdf-kegg-enzyme", "bio2rdf-kegg-glycan", "bio2rdf-kegg-pathway",
+        "bio2rdf-kegg-reaction", "bio2rdf-mgi", "bio2rdf-obo", "bio2rdf-omim", "bio2rdf-pdb",
+        "bio2rdf-pfam", "bio2rdf-prodom", "bio2rdf-prosite", "bio2rdf-pubchem", "bio2rdf-pubmed",
+        "bio2rdf-reactome", "bio2rdf-sgd", "bio2rdf-uniprot", "bio2rdf-uniprot-taxonomy",
+        "bio2rdf-uniprot-uniparc", "bio2rdf-uniprot-unipathway", "bio2rdf-unists",
+        "biographical-directory-of-the-united-states-congress", "bitzi", "bluk-bnb",
+        "brazilian-politicians", "bricklink", "british-museum-collection", "bund-offener-haushalt",
+        "business-data-gov-uk", "calames", "cap-italy-rdf", "chef_moz", "chem2bio2rdf",
+        "chempedia-rdf", "chronicling-america", "clean-energy-data-reegle", "coins-openuplabs",
+        "combined-nomenclature-2012", "core", "cornetto", "cpa-2008", "cpc-2008",
+        "cpv-2003", "cpv-2008", "ctic-public-dataset", "culturalinkeddata", "data-bnf-fr",
+        "data-cnr-it", "data-gov-ie", "data-gov-uk-time-intervals", "data-incubator-climb",
+        "data-incubator-discogs", "data-incubator-metoffice", "data-incubator-moseley",
+        "data-incubator-musicbrainz", "data-incubator-nasa", "data-incubator-our-airports",
+        "data-incubator-pokedex", "data-incubator-smcjournals", "data-open-ac-uk",
+        "datagov-catalog", "datos-bcn-cl", "datos-bne-es", "dbpedia", "dbpedia-el",
+        "dbpedia-lite", "dbpedia-live", "dbpedia-pt", "dbpedia-spotlight", "dbtropes",
+        "dbtune", "dbtune-artists-last-fm", "dbtune-audioscrobbler", "dbtune-classical",
+        "dbtune-john-peel-sessions", "dbtune-magnatune", "dbtune-musicbrainz", "dbtune-myspace",
+        "dclg-openuplabs", "dcs-sheffield", "deutsche-biographie", "deutsche-nationalbibliografie-dnb",
+        "dewey_decimal_classification", "diavgeia", "didactalia", "dmoz_rdf_dump",
+        "dnb-gemeinsame-normdatei", "doap_store", "doi", "dutch-national-regulations-metalex",
+        "ecco-tcp-linked-data", "ecs", "education-data-gov-uk", "education-openuplabs",
+        "educationalprograms_sisvu", "eea", "eea-rod", "enakting-co2emission", "enakting-crime",
+        "enakting-energy", "enakting-mortality", "enakting-nhs", "enakting-population",
+        "english-index-of-multiple-deprivation-ranking-2010", "english-index-of-multiple-deprivation-score-2010",
+        "english-indices-of-multiple-deprivation", "englishheritage_places", "enipedia",
+        "entrez_gene", "entrez_gene_extract", "environment-agency-bathing-water-quality",
+        "environment-data-gov-uk", "environmental-applications-reference-thesaurus",
+        "esd-standards", "eu-institutions", "eu-parliament-media", "eu-who-is-who",
+        "eunis", "eur-lex-rdf", "european-central-bank-statistics-linked-data", "europeana-lod",
+        "eurostat-rdf", "euskadi-farmacias", "eutc-productions", "event-media", "facebook-lids",
+        "fanhubz", "fao-geopolitical-ontology", "farmbio-chembl", "farmers-markets-geographic-data-united-states",
+        "federal-economic-rdf", "feedwrapper-lids", "finnish-municipalities", "fishes-of-texas",
+        "flickr-wrappr", "fly-ted", "flyatlas", "foodista", "freebase", "freebase_rdf_store",
+        "fu-berlin-cordis", "fu-berlin-dailymed", "fu-berlin-dblp", "fu-berlin-diseasome",
+        "fu-berlin-drugbank", "fu-berlin-euraxess", "fu-berlin-eures", "fu-berlin-eurostat",
+        "fu-berlin-medicare", "fu-berlin-project-gutenberg", "fu-berlin-sider", "fu-berlin-stitch",
+        "galen_from_co-odeorg", "gemeenschappelijke-thesaurus-audiovisuele-archieven",
+        "gemet", "geographic-openuplabs", "geolinkeddata", "geological-survey-of-austria-thesaurus",
+        "geonames-semantic-web", "geospecies", "geowordnet", "gesis-thesoz", "glastonbury-2011",
+        "global-hunger-index-2011", "gnoss", "go_annotations_from_ncbi_and_ebi", "googleart-wrapper",
+        "government-web-integration-for-linked-data", "govtrack", "greater-manchester-bus-timetable-linked-data",
+        "grrp", "grrt", "hbz_unioncatalog", "hellenic-fire-brigade", "hellenic-police",
+        "homologene", "hungarian-national-library-catalog", "idreffr", "insemtives",
+        "integrated-human-geography-service-for-lod", "intervalue", "iptc-newscodes",
+        "iserve", "isic-v4", "iso-3166-2-data", "istat-immigration", "italian-public-schools-linkedopendata-it",
+        "iucr-acta-cryst-e", "j-ucs-journal-of-universal-computer-science", "jamendo-dbtune",
+        "japan-radioactivity-stat", "jisc-cetis-directory", "jiscopenbib-bl_bnb-1",
+        "jita", "john-goodwins-family-tree", "kaken", "kasabi-eumida", "kasabi-eurobarometer-standard",
+        "kasabi-european-election-results", "klappstuhlclub", "knoesis-linked-sensor-data",
+        "l3s-dblp", "lcsh", "lcsubjects", "legislation-openuplabs", "lexvo", "libris",
+        "lichfield-spending", "lingvoj", "linked-crunchbase", "linked-edgar", "linked-eurostat",
+        "linked-life-data", "linked-nuts", "linked-open-camera", "linked-open-commerce",
+        "linked-open-data-of-ecology", "linked-open-numbers", "linked-open-piracy",
+        "linked-open-senate", "linked-open-vocabularies-lov", "linked-periodicals",
+        "linked-recipes", "linked-scotland", "linked-structured-product-labels", "linked-user-feedback",
+        "linkedct", "linkedgeodata", "linkedgeodata-aerodromes", "linkedlccn", "linkedmarkmail",
+        "linkedmdb", "linking-open-drug-data", "lista-encabezamientos-materia", "lobi",
+        "lobid-organisations", "lobid-resources", "loc", "loius", "london-gazette",
+        "los_metar", "lotico", "lower-layer-super-output-areas", "manchester-university-reading-lists",
+        "marc-codes", "massobservationarchivecatalogue", "medline", "meducator", "mesh-finnish",
+        "mesh_headings", "mesh_ipsv_skos_rdf", "mesh_pairs", "mesh_titles", "morelab",
+        "munich-offener-haushalt", "museums-in-italy", "my-experiment", "naics-2007",
+        "naics-2012", "nalt", "national-diet-library-authorities", "near", "neel",
+        "neurocommons_text_mining_pilot", "newsweek", "nhs-jargon", "nlm_2007_mesh",
+        "nomenclator-asturias-2010", "normesh", "nottingham-trent-university-resource-lists",
+        "ntnusc", "nuts-geovocab", "nvd", "nytimes-linked-open-data", "oanetzwerk",
+        "oceandrilling-codices", "oceandrilling-dbseabed", "oceandrilling-forams",
+        "oceandrilling-janus", "oceandrilling-janusamp", "oceandrilling-ldeo", "oclc-fast",
+        "odc", "odc-imd-environment-score", "odc-imd-rank-2007", "odc-lsoa", "odc-population-2005",
+        "offener-haushalt", "ogolod", "ontos-news-portal", "open-data-euskadi", "open-data-thesaurus",
+        "open-election-data-project", "open-energy-info-wiki", "open_directory", "opencalais",
+        "opencorporates", "opencyc", "openlibrary", "openlink-lod-cache", "openlylocal",
+        "openuplabs", "ordnance-survey-linked-data", "pali-english-lexicon", "patents-data-gov-uk",
+        "pleiades", "pokepedia-fr", "prefix-cc", "prelinger_archives", "printed-book-auction-catalogues",
+        "productdb", "productontology", "pscs-catalogue", "psh-subject-headings",
+        "public-record-office-victoria-semantic-wiki", "qualitywebdata-org", "quotations_book",
+        "radatana", "rdf-book-mashup", "rdfize-lastfm", "rdfohloh", "rechtspraak",
+        "reference-data-gov-uk", "renewable_energy_generators", "research-data-gov-uk",
+        "revyu", "riese", "rkb-explorer-acm", "rkb-explorer-budapest", "rkb-explorer-citeseer",
+        "rkb-explorer-cordis", "rkb-explorer-courseware", "rkb-explorer-crime", "rkb-explorer-crm",
+        "rkb-explorer-curriculum", "rkb-explorer-darmstadt", "rkb-explorer-dblp",
+        "rkb-explorer-deepblue", "rkb-explorer-deploy", "rkb-explorer-digitaleconomy",
+        "rkb-explorer-dotac", "rkb-explorer-ecs", "rkb-explorer-enaktingpsi", "rkb-explorer-eprints",
+        "rkb-explorer-epsrc", "rkb-explorer-era", "rkb-explorer-eurecom", "rkb-explorer-ft",
+        "rkb-explorer-fun", "rkb-explorer-gdlc", "rkb-explorer-ibm", "rkb-explorer-ieee",
+        "rkb-explorer-irit", "rkb-explorer-italy", "rkb-explorer-jisc", "rkb-explorer-kaunas",
+        "rkb-explorer-kisti", "rkb-explorer-laas", "rkb-explorer-lisbon", "rkb-explorer-newcastle",
+        "rkb-explorer-notube", "rkb-explorer-nsf", "rkb-explorer-oai", "rkb-explorer-opencyc",
+        "rkb-explorer-os", "rkb-explorer-photos", "rkb-explorer-pisa", "rkb-explorer-rae2001",
+        "rkb-explorer-resex", "rkb-explorer-risks", "rkb-explorer-roma", "rkb-explorer-roni",
+        "rkb-explorer-southampton", "rkb-explorer-ulm", "rkb-explorer-unlocode", "rkb-explorer-webconf",
+        "rkb-explorer-webscience", "rkb-explorer-wiki", "rkb-explorer-wordnet", "rkb_explorer_data",
+        "rpm_find", "rxnorm", "sadi-semantic-web-services-framework-registry", "sameas-org",
+        "sandrart-net", "sanskrit-english-lexicon", "santillana_guide_dataset", "schemapedia",
+        "scholarometer", "science_commons", "scotland-pupil-numbers-and-exam-results-2008",
+        "scotland-statistical-geography", "sears", "sec-rdfabout", "secold", "semantic-library",
+        "semantic-profiling-network", "semantic-universe", "semantic-web-dog-food",
+        "semantic-xbrl", "semantic_bible", "semantictweet", "semanticweb-org", "semsol-crunchbase",
+        "simile_data_collection", "sitc-v4", "slideshare2rdf", "smartlink", "socialsemweb-thesaurus",
+        "southampton-ac-uk-apps", "southampton-ecs-eprints", "spqr", "st-andrews-resource-lists",
+        "staff-organograms-and-pay-scottish-government", "staff-organograms-and-pay-thurrock-thames-gateway-development-corporation",
+        "statistics-data-gov-uk", "steak", "stitch-rameau", "stw-thesaurus-for-economics",
+        "sudocfr", "surge-radio", "swedish-open-cultural-heritage", "sweto-dblp",
+        "sztaki-lod", "t4gm-info", "tags2con-delicious", "talis-openlibrary", "taxonconcept",
+        "tcga", "tcmgenedit_dataset", "tekord", "telegraphis", "temple-ov-thee-lemur-datasets",
+        "testee", "texai_lexicon", "the-drug-interaction-knowledge-base", "the-view-from",
+        "thesaurus-datenwissen", "thesaurus-w", "thesesfr", "traffic-scotland", "transport-data-gov-uk",
+        "transport-openuplabs", "twarql", "twc-data-gov", "twc-logd", "twitter-lids",
+        "ub-mannheim-linked-data", "uberblic", "uk-legislation-api", "uk-postcodes",
+        "umbel", "umthes", "un-hazardous-numbers", "uniprot", "uniref", "university-plymouth-reading-lists",
+        "university-sussex-reading-lists", "uriburner", "us_census_data", "viaf",
+        "vivo", "vivo-cornell-university", "vivo-indiana-university", "vivo-university-of-florida",
+        "vu-wordnet", "vulnerapedia", "w3c-provenance-incubator-group-vocabulary-mappings",
+        "w3c-wordnet", "webnmasunotraveler", "wikipedia3", "world-bank-linked-data",
+        "world-factbook-fu-berlin", "yago", "yahoo_geoplanet", "yale_senselab", "yovisto",
+        "ysa", "zaragoza-datosabiertos", "zaragoza-turismo", "zbw-pressemappe20",
+        "zhishi-me", "zitgist-musicbrainz"]}'
+    http_version: 
+  recorded_at: Thu, 22 Mar 2012 04:40:45 GMT
+recorded_with: VCR 2.0.0

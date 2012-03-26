@@ -1,0 +1,110 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ckan.net/api/1/rest/group/art
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Server:
+      - nginx/0.7.65
+      Date:
+      - Thu, 22 Mar 2012 04:08:52 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '185'
+      Location:
+      - http://thedatahub.org/api/1/rest/group/art
+      X-Cache:
+      - MISS from localhost
+      X-Cache-Lookup:
+      - MISS from localhost:80
+      Via:
+      - 1.0 localhost (squid/3.0.STABLE19)
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
+        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/0.7.65</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 22 Mar 2012 04:08:52 GMT
+- request:
+    method: get
+    uri: http://thedatahub.org/api/1/rest/group/art
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.65
+      Date:
+      - Thu, 22 Mar 2012 04:08:53 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Access-Control-Allow-Methods:
+      - POST, PUT, GET, OPTIONS
+      Access-Control-Allow-Headers:
+      - X-CKAN-API-KEY
+      Set-Cookie:
+      - ckan_lang=en; Path=/
+      Content-Length:
+      - '1738'
+      X-Cache:
+      - MISS from localhost
+      X-Cache-Lookup:
+      - MISS from localhost:80
+      Via:
+      - 1.0 localhost (squid/3.0.STABLE19)
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"users": [], "display_name": "Art", "description": "For data regarding
+        artworks, collections, galleries or museums,  state funding or involvement
+        in the arts, art history, and aesthetics.\r\n\r\nThere''s been a lot of activity
+        on the art open data front recently:\r\n\r\n* [Art Open Data - Datasets Update](http://robmyers.org/2011/10/16/open-art-data---datasets-update/)\r\n\r\nHere
+        are some examples of the kinds of things you can do with art open data:\r\n\r\n*
+        [A scatter plot of paintings](http://robmyers.org/2011/09/18/imageplot-and-properties-plotr/)\r\n\r\n*
+        [Statistical analysis of art historical texts](http://robmyers.org/2010/12/23/exploring-art-data-8/)\r\n\r\n*
+        [More statistical analysis of art historical texts](http://robmyers.org/weblog/2010/12/exploring-art-data-9.html)\r\n\r\n*
+        [Analysis of museum attendance](http://robmyers.org/weblog/2010/11/exploring-art-data-5.html)\r\n\r\n*
+        [Analysis of state funding for the arts](http://robmyers.org/2010/11/21/exploring-art-data-3/)\r\n",
+        "created": "2010-02-23T19:30:51.840775", "title": "Art", "approval_status":
+        "approved", "state": "active", "extras": {}, "groups": [], "revision_id":
+        "8983d0e5-2acf-4252-abad-f92429a13830", "packages": ["color-inspiration",
+        "colournames", "colr-org", "europeana-lod", "flickr-thecommons", "freebase-visual-art",
+        "grants-for-the-arts-awards-arts-council-england", "jisc-openart", "national-indicators-9-10-11-baselines",
+        "noun-project", "powerhouse-museum-collection", "seattle-public-art", "technologies-of-enchantment",
+        "uk-national-gallery", "ukgac", "vads", "vanda-api", "wikimedia-commons-paintings",
+        "wikimedia_commons", "yorck-project"], "type": "group", "id": "2c4629ee-8fbe-4452-9b33-dc094ac80301",
+        "tags": [], "name": "art"}'
+    http_version: 
+  recorded_at: Thu, 22 Mar 2012 04:08:53 GMT
+recorded_with: VCR 2.0.0
