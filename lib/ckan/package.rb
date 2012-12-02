@@ -32,7 +32,9 @@ module CKAN
     def resources
       read_lazy_data
       @mapped_resources ||= @resources.
-        map{|r| Resource.new(r["url"],r["format"],r["description"],r["hash"])}
+        map do |r|
+          Resource.new(url: r["url"], format: r["format"], description: r["description"], hash: r["hash"])
+        end
     end
 
     def to_s
