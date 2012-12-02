@@ -67,6 +67,24 @@ module CKAN
 =end
     end
 
+    def hash_of_metadata_at_index(index = 0)
+      hash = {}
+      hasheables = ['name', 'url', 'format', 'resource_type', 'last_modified', 'size', 'hash', 'owner', 'description']
+      hasheables.each do |attribute|
+        hash["resources__#{index}__#{attribute}".to_sym] = self.send(attribute)
+      end
+      hash
+    end
+
+    def hash_of_metadata_for_dataset
+      hash = {}
+      hasheables = ['url', 'format', 'description', 'hash']
+      hasheables.each do |attribute|
+        hash[attribute.to_sym] = self.send(attribute)
+      end
+      hash
+    end
+
     def request_auth_for_storage(api_key)
       @timestamp = Time.now.utc
       @label = "#{@timestamp.iso8601}/#{self.name}"

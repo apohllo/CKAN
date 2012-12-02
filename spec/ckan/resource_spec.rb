@@ -2,8 +2,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe CKAN::Resource do
   before do
-    path = File.expand_path(File.dirname(__FILE__) + '/../fixtures/storage_auth.json')
-    @storage_auth_json = File.read(path)
+    # path = File.expand_path(File.dirname(__FILE__) + '/../fixtures/storage_auth.json')
+    # @storage_auth_json = File.read(path)
   end
 
   subject do
@@ -36,5 +36,10 @@ describe CKAN::Resource do
 
     #stub_request(:any, /.*storage.*/).with(body: @storage_auth_json)
 
+  end
+
+  it 'should deliver a hash of attributes' do
+    r = CKAN::Resource.new(name: 'foo')
+    r.hash_of_metadata_at_index()[:'resources__0__name'].should == 'foo'
   end
 end
