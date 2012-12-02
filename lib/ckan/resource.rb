@@ -13,8 +13,5 @@ module CKAN
       }
     end
 
-    def add_content_of_file(content)
-      @content = content
-    end
   end
 end
