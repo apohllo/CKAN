@@ -9,9 +9,12 @@ module CKAN
       }
     end
 
-    def to_hash
+    def to_hash(avoidables = [])
       hash = {}
-      self.instance_variables.each { |var| hash[var.to_s.delete("@").to_sym] = self.instance_variable_get(var) }
+      self.instance_variables.each do |var|
+        key = var.to_s.delete("@").to_sym
+        hash[key] = self.instance_variable_get(var) unless avoidables.member? key
+      end
       hash
     end
 
