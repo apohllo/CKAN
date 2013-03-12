@@ -22,14 +22,50 @@ describe CKAN::Resource do
     subject.content.length.should == file_content.length
   end
 
+=begin
+  subject.upload should make the following request:
+  GET http://datahub.io/en/api/storage/auth/form/2013-03-12T03:27:24Z/Dummy
+  with headers {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>''}
+=end
   it "should get auth for uploading" do
+    action_url = 'http://foo.datahub.io'
+    redirect_url = 'http://bar.datahub.io'
+    name = 'Dummy'
+    now = Time.now.utc.iso8601
+    key = 'DEADBEEF'
+    label = "#{now}/#{name}"
+    json = {
+      action: action_url,
+      fields: [
+        { foo: 1 },
+        { bar: 2 },
+        { qxz: 3 },
+        { lor: 4 },
+        { name: name }
+      ]
+    }.to_json
+
+    # Stubs the whole handshake with the datahub.io
+    stub_request(:get, "http://datahub.io/en/api/storage/auth/form/#{label}").
+         with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>key}).
+         to_return(:status => 200, :body => json, :headers => {})
+    stub_request(:post, action_url).
+         with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>key}).
+         to_return(:status => 200, :body => 'OK', :headers => { 'location'=>redirect_url })
+    stub_request(:get, redirect_url).
+         with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>key}).
+         to_return(:status => 200, :body => 'OK', :headers => {})
+    stub_request(:get, "http://datahub.io/en/api/storage/metadata/#{label}").
+         with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>key}).
+         to_return(:status => 200, :body => json, :headers => {})
+
     VCR.eject_cassette
     VCR.turned_off do
       file_content = File.read(@dummy_csv)
 
       subject.name = 'Dummy'
       subject.content = file_content
-      subject.upload('')
+      subject.upload(key)
       subject.auth.to_s.should_not be_empty
     end
 
