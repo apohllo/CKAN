@@ -1,5 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../lib/ckan')
 require 'vcr'
+require 'webmock'
+include WebMock
 
 VCR.configure do |c|
   c.hook_into :webmock
