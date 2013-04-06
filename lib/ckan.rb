@@ -1,6 +1,6 @@
 module CKAN
  class << self
-    CKAN.api_base = "http://data.gv.at/katalog/api/"
+    CKAN.api_base = "http://ckan.net/api/1/"
     attr_accessor :api_base
   end
 end
