@@ -32,6 +32,9 @@ The gem is available at rubygems.org, so you can install it with:
   # get all CKAN packages
   packages = CKAN::Package.find
 
+  # set API Base
+  CKAN::api_base = "http://data.gv.at/katalog/api/"
+
   # query for CKAN packages
   packages = CKAN::Package.find(:tags => ["lod", "government"], :groups => "lodcloud")
 

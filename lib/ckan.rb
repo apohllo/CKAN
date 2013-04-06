@@ -1,5 +1,8 @@
 module CKAN
-  API_BASE = "http://ckan.net/api/1/"
+ class << self
+    CKAN.api_base = "http://ckan.net/api/1/"
+    attr_accessor :api_base
+  end
 end
 
 require 'open-uri'
