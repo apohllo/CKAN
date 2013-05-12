@@ -1,31 +1,31 @@
-= CKAN
+# CKAN
 
 * http://github.com/apohllo/CKAN
 
-= DESCRIPTION
+## DESCRIPTION
 
 'CKAN' is a Ruby client of the Comprehensive Knowledge Archive Network.
 
-= FEATURES/PROBLEMS
+## FEATURES/PROBLEMS
 
 * The project is in pre-alpha state.
 * CKAN packages REST API wrapper.
 * CKAN resources class.
 * Query API for CKAN packages.
 
-= SYNOPSIS
+## SYNOPSIS
 
 'CKAN' is a Ruby client for the Comprehensive Knowledge Archive Network. It
 provides an object oriented interface for the repository based on the REST API
 of CKAN.
 
-= INSTALL
+## INSTALL
 
 The gem is available at rubygems.org, so you can install it with:
 
   $ gem install ckan
 
-= BASIC USAGE
+## BASIC USAGE
 
 ```ruby
   require 'ckan'
@@ -52,7 +52,7 @@ The gem is available at rubygems.org, so you can install it with:
   groups.first.packages
 ```
 
-== LICENSE:
+## LICENSE:
  
 (The MIT License)
 
@@ -77,7 +77,7 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-== FEEDBACK
+## FEEDBACK
 
 * mailto:apohllo@o2.pl
 
