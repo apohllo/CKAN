@@ -27,6 +27,7 @@ The gem is available at rubygems.org, so you can install it with:
 
 = BASIC USAGE
 
+```ruby
   require 'ckan'
 
   # get all CKAN packages
@@ -49,12 +50,13 @@ The gem is available at rubygems.org, so you can install it with:
 
   # get the list of packages inside a group
   groups.first.packages
+```
 
 == LICENSE:
  
 (The MIT License)
 
-Copyright (c) 2010 Aleksander Pohl
+Copyright (c) 2010-2013 Aleksander Pohl
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
