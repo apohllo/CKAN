@@ -1,7 +1,7 @@
 module CKAN
   class Package < Model
-    self.site = API_BASE + "rest/package"
-    self.search = API_BASE + "search/package"
+    self.site =  "rest/package"
+    self.search = "search/package"
 
     attr_reader :id
     lazy_reader :name, :title, :url, :version, :author, :author_email,

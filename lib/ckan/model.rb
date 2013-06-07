@@ -16,8 +16,12 @@ module CKAN
       @site = address
     end
 
+    def self.base
+      CKAN::API.api_url
+    end
+
     def self.site
-      @site
+      base + @site
     end
 
     def self.search=(address)
@@ -25,7 +29,7 @@ module CKAN
     end
 
     def self.search
-      @search
+      base + @search
     end
 
     def self.read_remote_json_data(address)

@@ -30,6 +30,9 @@ The gem is available at rubygems.org, so you can install it with:
 ```ruby
   require 'ckan'
 
+  # Optionally, set the base API url
+  CKAN::API.api_base = "...your CKAN API URL ..."
+
   # get all CKAN packages
   packages = CKAN::Package.find
 
