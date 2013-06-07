@@ -19,7 +19,7 @@ module CKAN
     end
 
     def upload(api_token)
-      uri = URI.parse('http://datahub.io/api/rest/dataset')
+      uri = URI.parse(CKAN::API.api_url + '/rest/dataset')
       http = Net::HTTP.new(uri.host, uri.port)
       request = Net::HTTP::Post.new(uri.request_uri)
       request['X-CKAN-API-Key'] = api_token

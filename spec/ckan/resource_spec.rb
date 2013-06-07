@@ -28,7 +28,7 @@ describe CKAN::Resource do
   with headers {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>''}
 =end
   it "should get auth for uploading" do
-    action_url = 'http://foo.datahub.io'
+    action_url = '/storage/upload_handle'
     redirect_url = 'http://bar.datahub.io'
     name = 'Dummy'
     now = Time.now.utc.iso8601
@@ -46,16 +46,16 @@ describe CKAN::Resource do
     }.to_json
 
     # Stubs the whole handshake with the datahub.io
-    stub_request(:get, "http://datahub.io/en/api/storage/auth/form/#{label}").
+    stub_request(:get, "http://ckan.net/api/1/storage/auth/form/#{label}").
          with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>key}).
          to_return(:status => 200, :body => json, :headers => {})
-    stub_request(:post, action_url).
+    stub_request(:post, "http://ckan.net/api/1/storage/upload_handle").
          with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>key}).
          to_return(:status => 200, :body => 'OK', :headers => { 'location'=>redirect_url })
     stub_request(:get, redirect_url).
          with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>key}).
          to_return(:status => 200, :body => 'OK', :headers => {})
-    stub_request(:get, "http://datahub.io/en/api/storage/metadata/#{label}").
+    stub_request(:get, "http://ckan.net/api/1/storage/metadata/#{label}").
          with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>key}).
          to_return(:status => 200, :body => json, :headers => {})
 
