@@ -1,6 +1,6 @@
 module CKAN
   class Group < Model
-    self.site = API_BASE + "rest/group"
+    self.site = "rest/group"
 
     attr_reader :id, :name
     lazy_reader :title, :description, :packages
