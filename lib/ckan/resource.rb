@@ -23,6 +23,10 @@ module CKAN
       }
     end
 
+    def get_base
+      CKAN::API.api_url.chomp("/")
+    end
+
     def get_url(url, api_key)
       uri = URI.parse(url)
       http = Net::HTTP.new(uri.host, uri.port)
@@ -38,8 +42,10 @@ module CKAN
 
       # 2 POST to storage
       response = post_to_storage(@auth, api_key)
+
       # 3 validate upload, should 200
       upload_ok = validate_upload_at_url(response.header['location'], api_key)
+
       # 4 grab metadata
       @metadata = get_resource_metadata(api_key)
       if @metadata
@@ -88,14 +94,14 @@ module CKAN
     def request_auth_for_storage(api_key)
       @timestamp = Time.now.utc
       @label = "#{@timestamp.iso8601}/#{self.name}"
-      url = "http://datahub.io/en/api/storage/auth/form/#{@label}"
+      url = get_base + "/storage/auth/form/#{@label}"
       # GET /en/api/storage/auth/form/2012-12-02T180515/dal_team.csv HTTP/1.1
       response = get_url(url, api_key)
       JSON.parse(response.body) if response.body
     end
 
     def post_to_storage(auth, api_key)
-      url = auth['action']
+      url = get_base + auth['action']
       uri = URI.parse(url)
       post_body = auth['fields'].each_with_object([]) do |field, post_body|
         post_body << "--#{BOUNDARY}\r\n"
@@ -122,7 +128,7 @@ module CKAN
 
     def get_resource_metadata(api_key)
       # GET 2012-12-02T180515/dal_team.csv
-      url = "http://datahub.io/en/api/storage/metadata/#{@label}"
+      url = get_base + "/storage/metadata/#{@label}"
       response = get_url(url, api_key)
       JSON.parse(response.body)
     end

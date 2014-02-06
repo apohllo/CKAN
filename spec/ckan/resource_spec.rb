@@ -4,6 +4,7 @@ describe CKAN::Resource do
   before do
     # path = File.expand_path(File.dirname(__FILE__) + '/../fixtures/storage_auth.json')
     # @storage_auth_json = File.read(path)
+    @dummy_csv = File.expand_path(File.dirname(__FILE__) + '/../fixtures/dummy.csv')
   end
 
   subject do
@@ -15,22 +16,56 @@ describe CKAN::Resource do
   end
 
   it "should add content of files" do
-    file_name = 'dal_team.csv'
-    file_content = File.read(file_name)
+    file_content = File.read(@dummy_csv)
 
     subject.content = file_content
     subject.content.length.should == file_content.length
   end
 
+=begin
+  subject.upload should make the following request:
+  GET http://datahub.io/en/api/storage/auth/form/2013-03-12T03:27:24Z/Dummy
+  with headers {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>''}
+=end
   it "should get auth for uploading" do
+    action_url = '/storage/upload_handle'
+    redirect_url = 'http://bar.datahub.io'
+    name = 'Dummy'
+    now = Time.now.utc.iso8601
+    key = 'DEADBEEF'
+    label = "#{now}/#{name}"
+    json = {
+      action: action_url,
+      fields: [
+        { foo: 1 },
+        { bar: 2 },
+        { qxz: 3 },
+        { lor: 4 },
+        { name: name }
+      ]
+    }.to_json
+
+    # Stubs the whole handshake with the datahub.io
+    stub_request(:get, "http://ckan.net/api/1/storage/auth/form/#{label}").
+         with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>key}).
+         to_return(:status => 200, :body => json, :headers => {})
+    stub_request(:post, "http://ckan.net/api/1/storage/upload_handle").
+         with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>key}).
+         to_return(:status => 200, :body => 'OK', :headers => { 'location'=>redirect_url })
+    stub_request(:get, redirect_url).
+         with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>key}).
+         to_return(:status => 200, :body => 'OK', :headers => {})
+    stub_request(:get, "http://ckan.net/api/1/storage/metadata/#{label}").
+         with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby', 'X-Ckan-Api-Key'=>key}).
+         to_return(:status => 200, :body => json, :headers => {})
+
     VCR.eject_cassette
     VCR.turned_off do
-      file_name = 'dal_team.csv'
-      file_content = File.read(file_name)
+      file_content = File.read(@dummy_csv)
 
-      subject.name = file_name
+      subject.name = 'Dummy'
       subject.content = file_content
-      subject.upload('')
+      subject.upload(key)
       subject.auth.to_s.should_not be_empty
     end
 
