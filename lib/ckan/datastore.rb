@@ -18,8 +18,9 @@ module CKAN
       hash
     end
 
-    def upload(api_token)
-      uri = URI.parse(CKAN::API.api_url + '/rest/dataset')
+    def upload(api_token, url=CKAN::API.api_url+'/reset/dataset', limit = 10)
+      raise ArgumentError, 'too many HTTP redirects' if limit == 0
+      uri = URI.parse(url)
       http = Net::HTTP.new(uri.host, uri.port)
       request = Net::HTTP::Post.new(uri.request_uri)
       request['X-CKAN-API-Key'] = api_token
@@ -33,7 +34,18 @@ module CKAN
       else
         request.body = self.to_hash.to_json
       end
-      http.request(request)
+
+      response = http.request(request)
+      case response
+      when Net::HTTPSuccess then
+        response
+      when Net::HTTPRedirection then
+        location = response['location']
+        warn "redirected to #{location}"
+        upload(api_token, location, limit - 1)
+      else
+        response.value
+      end
     end
 
     def hash_of_resources

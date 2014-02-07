@@ -27,12 +27,23 @@ module CKAN
       CKAN::API.api_url.chomp("/")
     end
 
-    def get_url(url, api_key)
+    def get_url(url, api_key, limit=10)
+      raise ArgumentError, 'too many HTTP redirects' if limit == 0
       uri = URI.parse(url)
       http = Net::HTTP.new(uri.host, uri.port)
       request = Net::HTTP::Get.new(uri.request_uri)
       request['X-CKAN-API-Key'] = api_key
-      http.request(request)
+      response = http.request(request)
+      case response
+      when Net::HTTPSuccess then
+        response
+      when Net::HTTPRedirection then
+        location = response['location']
+        warn "redirected to #{location}"
+        get_url(location, api_key, limit - 1)
+      else
+        response.value
+      end
     end
 
     def upload(api_key)
