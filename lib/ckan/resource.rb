@@ -1,3 +1,5 @@
+require 'csv'
+require 'open-uri'
 require 'time'
 
 module CKAN
@@ -144,6 +146,26 @@ module CKAN
       post_body << "\r\n--#{BOUNDARY}--\r\n"
 
       post_body.join
+    end
+    
+    # Gets the content of this resource as a CSV::Table
+    # options defaults to the same options as CSV.table
+    def content_csv(options={headers: true, converters: :numeric, header_converters: :symbol})
+      CSV.parse content, options
+    end
+    
+    # Gets the content of this resource, from the internet if appropriate
+    def content
+      @content || open(url_safe).read
+    end
+    
+    # Gets the URL of the resource safely - some CKAN APIs return this
+    # containing invalid characters such as spaces.
+    # If URI thinks this is an invalid URI, escape it
+    def url_safe
+      URI.parse(url).to_s
+    rescue URI::InvalidURIError
+      URI.escape url
     end
 
 =begin

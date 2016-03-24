@@ -8,7 +8,7 @@ describe CKAN::Resource do
   end
 
   subject do
-    CKAN::Resource.new(url: 'http://foo.bar', format: 'text/csv', description: 'Fubar', hash: '0xDEADBEEF')
+    CKAN::Resource.new(url: 'http://foo.bar/', format: 'text/csv', description: 'Fubar', hash: '0xDEADBEEF')
   end
 
   it "should return a Resource object" do
@@ -77,4 +77,59 @@ describe CKAN::Resource do
     r = CKAN::Resource.new(name: 'foo')
     r.hash_of_metadata_at_index()[:'resources__0__name'].should == 'foo'
   end
+  
+  describe '#url_safe' do
+    it 'should escape URLs containing spaces' do
+      subject.stub(:url) {'http://localhost/foo bar baz.csv'}
+      subject.url_safe.should eq('http://localhost/foo%20bar%20baz.csv')
+    end
+    it 'should not escape URLs that are already escaped' do
+      subject.stub(:url) {'http://localhost/foo%20bar%20baz.csv'}
+      subject.url_safe.should eq('http://localhost/foo%20bar%20baz.csv')
+    end
+  end
+  
+  context 'when resource URL points to a CSV' do
+    before(:each) do
+      VCR.turn_off!
+      stub_request(:get, subject.url).to_return({
+        status: 200,
+        headers: {'Content-Type' => 'text/csv'},
+        body: "foo,bar,baz\nWibble,Wobble,Woo\n"
+      })
+    end
+    describe '#content' do
+      context 'when @content is unset' do
+        it 'should return the content from the resource' do
+          subject.content.should eq("foo,bar,baz\nWibble,Wobble,Woo\n")
+        end
+      end
+      context 'when @content is set' do
+        before(:each) { subject.content = "foo,bar,baz\nOne,Two,Three\n" }
+        it 'should return @content' do
+          subject.content.should eq("foo,bar,baz\nOne,Two,Three\n")
+        end
+      end
+    end
+    describe '#content_csv' do
+      context 'when @content is unset' do
+        it 'should return a CSV::Table' do
+          subject.content_csv.should be_a(CSV::Table)
+        end
+        it 'should return the content from the resource' do
+          subject.content_csv.first[:foo].should eq('Wibble')
+        end
+        it 'can be called with overridden options' do
+          subject.content_csv(headers: false).first.first.should eq('foo')
+        end
+      end
+      context 'when @content is set' do
+        before(:each) { subject.content = "foo,bar,baz\nOne,Two,Three\n" }
+        it 'should return @content' do
+          subject.content_csv.first[:foo].should eq('One')
+        end
+      end
+    end
+  end
+    
 end
