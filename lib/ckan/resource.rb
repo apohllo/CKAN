@@ -150,8 +150,9 @@ module CKAN
     
     # Gets the content of this resource as a CSV::Table
     # options defaults to the same options as CSV.table
-    def content_csv(options={headers: true, converters: :numeric, header_converters: :symbol})
-      CSV.parse content, options
+    def content_csv(options={headers: true, converters: :all, header_converters: :symbol})
+      content_sanitized = content.encode('UTF-8', invalid: :replace, undef: :replace)
+      CSV.parse content_sanitized, options
     end
     
     # Gets the content of this resource, from the internet if appropriate
