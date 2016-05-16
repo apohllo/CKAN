@@ -122,6 +122,20 @@ describe CKAN::Resource do
         it 'can be called with overridden options' do
           subject.content_csv(headers: false).first.first.should eq('foo')
         end
+        context 'iso-8859-1 data' do
+          before(:each) do
+            stub_request(:get, subject.url).to_return({
+              status: 200,
+              headers: {'Content-Type' => 'text/csv'},
+              body: "foo,bar,baz\nWibbl\xe9,Wobbl\xe9,Woo\xe9\n"
+            })
+          end
+          it 'can get content in a different encoding' do
+            data = subject.content_csv(headers: true, encoding: 'iso-8859-1')
+            data.first['foo'].should eq("Wibblé")
+            data.first['baz'].should eq("Wooé")
+          end
+        end
       end
       context 'when @content is set' do
         before(:each) { subject.content = "foo,bar,baz\nOne,Two,Three\n" }
